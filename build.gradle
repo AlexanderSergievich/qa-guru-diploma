@@ -56,7 +56,7 @@ test {
     useJUnitPlatform()
 }
 
-task Genius(type: Test){
+task Arzamas(type: Test){
     useJUnitPlatform{
         includeTags("Api")
         excludeTags("e2e")

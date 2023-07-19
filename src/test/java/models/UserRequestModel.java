@@ -2,7 +2,7 @@ package models;
 
 import lombok.Data;
 @Data
-public class LoginRequestModel {
+public class UserRequestModel {
         private Data data;
         @lombok.Data
         public class Data{
@@ -12,6 +12,8 @@ public class LoginRequestModel {
                 public class Attributes{
                         public String email;
                         public String password;
+                        public String name;
+                        public boolean newsletter;
                 }
         }
 }

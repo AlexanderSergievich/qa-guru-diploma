@@ -2,7 +2,7 @@ package models;
 
 import lombok.Data;
 @Data
-public class LoginResponseModel {
+public class UserResponseModel {
     public String session_jwt;
     public String action;
 

@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.with;
 import static io.restassured.filter.log.LogDetail.*;
 
 public class UserSpecs {
-    public static RequestSpecification PostRequestSpecification = with()
+    public static RequestSpecification SignInPostRequestSpecification = with()
             .header("Content-Type", "application/json; charset=utf-8")
             .log().all()
             .filter(withCustomTemplates());
@@ -26,6 +26,10 @@ public class UserSpecs {
             .log(STATUS)
             .expectStatusCode(200)
             .build();
+    public static RequestSpecification SignUpPostRequestSpecification = with()
+            .header("Content-Type", "application/vnd.api+json")
+            .log().all()
+            .filter(withCustomTemplates());
 //    public static ResponseSpecification createUserResponseSpec = new ResponseSpecBuilder()
 //            .log(ALL)
 //            .expectStatusCode(201)
