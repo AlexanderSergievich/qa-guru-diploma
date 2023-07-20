@@ -6,20 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-
 public class RandomUtils {
-//    static String[] courses = {"Краткая история феминизма", "Песни русской эмиграции"};
-//    public static String getRandomItemFromArray(String[] values){
-//        int index = getRandomInt(0, values.length   - 1);
-//        return values[index];
-//    }
-//    public static int getRandomInt(int min, int max) {
-//        return ThreadLocalRandom.current().nextInt(min, max + 1);
-//    }
-//    public static String getRandomCourse(){
-//        return getRandomItemFromArray(courses);
-//    }
 public static String getRandomValueFromCSV(String csvFile) {
     List<String[]> data = readCSV(csvFile);
 

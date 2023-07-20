@@ -19,7 +19,7 @@ public class ArzamasE2ETests extends TestBase {
     String course = RandomUtils.getRandomValueFromCSV(csvFile);
 
     @Test
-    @Tag("e2e")
+    @Tag("you")
     @DisplayName("Change password")
     public void testChangePassword() {
         ArzamasApiTests arzamasApiTests = new ArzamasApiTests();
@@ -36,16 +36,31 @@ public class ArzamasE2ETests extends TestBase {
                 .ClickChangePasswordStep()
                 .checkInputsAreEmptyStep();
         step("Validate password have been changed", () ->
-                arzamasApiTests.passwordBeenChangedTest());
+                arzamasApiTests.testPasswordBeenChanged());
+    }
+
+    @Test
+    @Tag("you")
+    @DisplayName("Find course by name")
+    public void testFindCourseByName() {
+            coursesPageSteps.openCoursesPageStep()
+                    .clickAllCourseTypesStep()
+                    .clickAllCourseGenresStep()
+                    .findCourseByNameStep(course)
+                    .checkCourseTitleStep(course);
     }
     @Test
     @Tag("e2e")
-    @DisplayName("Find course by name")
-    public void testFindCourseByName(){
-        coursesPageStep.openCoursesPageStep()
-                .clickAllCourseTypesStep()
-                .clickAllCourseGenresStep()
-                .findCourseByNameStep(course)
-                .checkCourseTitleStep(course);
+    @DisplayName("Buy as a Gift flow without payment")
+    public void testBuyAsAGift(){
+        open("/");
+        giftPageSteps.clickOnGiftButtonStep()
+                .clickOnRadioButtonStep()
+                .chooseSubDurationStep()
+                .setEmailStep(userConfig.getEmail())
+                .setConfirmEmailStep(userConfig.getEmail())
+                .clickBuyButtonStep()
+                .checkPayButtonStep();
     }
+    //тест на поиск
 }

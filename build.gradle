@@ -26,10 +26,14 @@ dependencies {
             "io.qameta.allure:allure-rest-assured:$allureVersion",
             "io.rest-assured:rest-assured:$restAssuredVersion",
             "io.rest-assured:json-schema-validator:$restAssuredVersion",
-            "org.aeonbits.owner:owner:1.0.12"
+            "org.aeonbits.owner:owner:1.0.12",
+            "org.apache.logging.log4j:log4j-core:2.17.1",
+
 
     )
     implementation(
+            "org.slf4j:slf4j-api:2.0.0-alpha4",
+            "org.slf4j:slf4j-log4j12:2.0.0-alpha4",
             "com.fasterxml.jackson.core:jackson-core:2.13.1",
             'com.fasterxml.jackson.core:jackson-databind:2.13.1' //удалить
     )
@@ -58,7 +62,7 @@ test {
 
 task Arzamas(type: Test){
     useJUnitPlatform{
-        includeTags("Api")
-        excludeTags("e2e")
+        includeTags("e2e")
+        //excludeTags("e2e")
     }
 }

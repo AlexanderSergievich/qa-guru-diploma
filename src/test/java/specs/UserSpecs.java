@@ -3,6 +3,7 @@ package specs;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import tests.api.ArzamasApiTests;
 
 import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
@@ -28,6 +29,10 @@ public class UserSpecs {
             .build();
     public static RequestSpecification SignUpPostRequestSpecification = with()
             .header("Content-Type", "application/vnd.api+json")
+            .log().all()
+            .filter(withCustomTemplates());
+    public static RequestSpecification patchRequestSpecification = with()
+            .header("Content-Type", "application/json; charset=utf-8")
             .log().all()
             .filter(withCustomTemplates());
 //    public static ResponseSpecification createUserResponseSpec = new ResponseSpecBuilder()

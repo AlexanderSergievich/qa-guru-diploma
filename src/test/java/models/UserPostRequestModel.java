@@ -2,7 +2,7 @@ package models;
 
 import lombok.Data;
 @Data
-public class UserRequestModel {
+public class UserPostRequestModel {
         private Data data;
         @lombok.Data
         public class Data{

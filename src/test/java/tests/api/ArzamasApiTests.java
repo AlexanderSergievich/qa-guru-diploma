@@ -1,8 +1,9 @@
 package tests.api;
 
-import com.github.javafaker.Faker;
-import models.UserRequestModel;
-import models.UserResponseModel;
+import models.UserPatchRequestModel;
+import models.UserPatchResponseModel;
+import models.UserPostRequestModel;
+import models.UserPostResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -17,37 +18,41 @@ public class ArzamasApiTests extends TestBase {
     public String token;
     public String authCookieKey = "Session-JWT";
     public String url = "https://radio.arzamas.academy";
-    UserRequestModel.Data data = new UserRequestModel().new Data();
-    UserRequestModel.Data.Attributes attributes = new UserRequestModel().new Data().new Attributes();
+    UserPostRequestModel.Data postData = new UserPostRequestModel().new Data();
+    UserPostRequestModel.Data.Attributes postAttributes = new UserPostRequestModel().new Data().new Attributes();
+
+    UserPatchRequestModel.Data patchData = new UserPatchRequestModel().new Data();
+    UserPatchRequestModel.Data.Attributes patchAttributes = new UserPatchRequestModel().new Data().new Attributes();
     @Test
     @Tag("Api")
     @DisplayName("Sign in user")
-    public void testSignIn() {
+    public String testSignIn() {
 
-        data.setType("email_identities");
-        attributes.setEmail(userConfig.getEmail());
-        attributes.setPassword(userConfig.getPassword());
+        postData.setType("email_identities");
+        postAttributes.setEmail(userConfig.getEmail());
+        postAttributes.setPassword(userConfig.getPassword());
 
-        UserRequestModel constructedRequestModel = new UserRequestModel();
-        constructedRequestModel.setData(data);
-        data.setAttributes(attributes);
+        UserPostRequestModel constructedRequestModel = new UserPostRequestModel();
+        constructedRequestModel.setData(postData);
+        postData.setAttributes(postAttributes);
         step("Perform authentication", () -> {
-            UserResponseModel userResponseModel = given(SignInPostRequestSpecification)
+            UserPostResponseModel userPostResponseModel = given(SignInPostRequestSpecification)
                     .body(constructedRequestModel)
                     .when()
                     .post(url + "/api/v1/accounts/email_identities/sign_in")
                     .then()
                     .spec(PostResponseSpecification)
-                    .extract().as(UserResponseModel.class);
+                    .extract().as(UserPostResponseModel.class);
             step("Check response", () -> {
-                assertNotNull(userResponseModel.getSession_jwt());
-                assertNotNull("authorized", userResponseModel.getAction());
+                assertNotNull(userPostResponseModel.getSession_jwt());
+                assertNotNull("authorized", userPostResponseModel.getAction());
             });
             step("Perform authorisation", () ->{
-                token = userResponseModel.getSession_jwt();
+                token = userPostResponseModel.getSession_jwt();
                 testPerformAuthorisation();
             });
         });
+        return token;
     }
     @Test
     @Tag("Api")
@@ -66,28 +71,28 @@ public class ArzamasApiTests extends TestBase {
     @Tag("Api")
     @DisplayName("Sign up user without marketing distribution agreement")
     public void testSignUp(){
-        data.setType("email_identities");
-        attributes.setEmail(faker.internet().emailAddress());
-        attributes.setPassword(faker.internet().password());
-        attributes.setName(faker.name().firstName() + " " + faker.name().lastName());
-        attributes.setNewsletter(false);
-        UserRequestModel constructedUserRequestModel = new UserRequestModel();
-        constructedUserRequestModel.setData(data);
-        data.setAttributes(attributes);
-        step("Sign up with random user data", () ->{
-            UserResponseModel userResponseModel = given(SignUpPostRequestSpecification)
-                    .body(constructedUserRequestModel)
+        postData.setType("email_identities");
+        postAttributes.setEmail(faker.internet().emailAddress());
+        postAttributes.setPassword(faker.internet().password());
+        postAttributes.setName(faker.name().firstName() + " " + faker.name().lastName());
+        postAttributes.setNewsletter(false);
+        UserPostRequestModel constructedUserPostRequestModel = new UserPostRequestModel();
+        constructedUserPostRequestModel.setData(postData);
+        postData.setAttributes(postAttributes);
+        step("Sign up with random user postData", () ->{
+            UserPostResponseModel userPostResponseModel = given(SignUpPostRequestSpecification)
+                    .body(constructedUserPostRequestModel)
                     .when()
                     .post("/api/v1/accounts/email_identities/sign_up")
                     .then()
                     .spec(PostResponseSpecification)
-                    .extract().as(UserResponseModel.class);
+                    .extract().as(UserPostResponseModel.class);
             step("Check response", () -> {
-                assertNotNull(userResponseModel.getSession_jwt());
-                assertNotNull("authorized", userResponseModel.getAction());
+                assertNotNull(userPostResponseModel.getSession_jwt());
+                assertNotNull("authorized", userPostResponseModel.getAction());
             });
             step("Perform authorisation", () ->{
-                token = userResponseModel.getSession_jwt();
+                token = userPostResponseModel.getSession_jwt();
                 testPerformAuthorisation();
             });
         });
@@ -95,28 +100,60 @@ public class ArzamasApiTests extends TestBase {
     @Test
     @Tag("Api")
     @DisplayName("Sign in to verify password has been changed")
-    public void passwordBeenChangedTest() {
-        UserRequestModel.Data data = new UserRequestModel().new Data();
-        UserRequestModel.Data.Attributes attributes = new UserRequestModel().new Data().new Attributes();
+    public void testPasswordBeenChanged() {
+        UserPostRequestModel.Data data = new UserPostRequestModel().new Data();
+        UserPostRequestModel.Data.Attributes attributes = new UserPostRequestModel().new Data().new Attributes();
         data.setType("email_identities");
 
         attributes.setEmail(userConfig.getEmail());
         attributes.setPassword(userConfig.getNewPassword());
 
-        UserRequestModel constructedRequestModel = new UserRequestModel();
+        UserPostRequestModel constructedRequestModel = new UserPostRequestModel();
         constructedRequestModel.setData(data);
         data.setAttributes(attributes);
         step("Perform authentication", () -> {
-            UserResponseModel userResponseModel = given(SignInPostRequestSpecification)
+            UserPostResponseModel userPostResponseModel = given(SignInPostRequestSpecification)
                     .body(constructedRequestModel)
                     .when()
                     .post(url + "/api/v1/accounts/email_identities/sign_in")
                     .then()
                     .spec(PostResponseSpecification)
-                    .extract().as(UserResponseModel.class);
+                    .extract().as(UserPostResponseModel.class);
             step("Check response", () -> {
-                assertNotNull(userResponseModel.getSession_jwt());
-                assertNotNull("authorized", userResponseModel.getAction());
+                assertNotNull(userPostResponseModel.getSession_jwt());
+                assertNotNull("authorized", userPostResponseModel.getAction());
+            });
+        });
+    }
+    @Test
+    @Tag("Api")
+    @DisplayName("Update newsletter distribution")
+    public void testUpdateNewsDistribution(){
+        step("Perform authorisation and get token", () -> {
+            String jwtToken = testSignIn();
+            step("Perform update", () -> {
+                patchData.setType("email_identities");
+                patchAttributes.setEmail(userConfig.getEmail());
+                patchAttributes.setNewsletter(true);
+
+                UserPatchRequestModel constructedRequestModel = new UserPatchRequestModel();
+                constructedRequestModel.setData(patchData);
+                patchData.setAttributes(patchAttributes);
+
+                UserPatchResponseModel userPatchResponseModel = given(patchRequestSpecification)
+                        .body(constructedRequestModel)
+                        .header("Session-jwt", jwtToken)
+                        .when()
+                        .patch("/api/v1/accounts/email_identities/update")
+                        .then()
+                        .spec(PostResponseSpecification)
+                        .extract().as(UserPatchResponseModel.class);
+                step("Check response", () -> {
+                    assertEquals("success", userPatchResponseModel.getStatus());
+                    assertEquals("Изменения сохранены", userPatchResponseModel.getMessage());
+                    assertNull(userPatchResponseModel.getError());
+                    assertArrayEquals(new String[]{}, userPatchResponseModel.getErrors());
+                });
             });
         });
     }
