@@ -3,7 +3,6 @@ package specs;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import tests.api.ArzamasApiTests;
 
 import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
@@ -35,17 +34,5 @@ public class UserSpecs {
             .header("Content-Type", "application/json; charset=utf-8")
             .log().all()
             .filter(withCustomTemplates());
-//    public static ResponseSpecification createUserResponseSpec = new ResponseSpecBuilder()
-//            .log(ALL)
-//            .expectStatusCode(201)
-//            .build();
-//    public static ResponseSpecification deleteUserResponseSpec = new ResponseSpecBuilder()
-//            .log(ALL)
-//            .expectStatusCode(204)
-//            .build();
-//    public static ResponseSpecification notFoundUserResponseSpec = new ResponseSpecBuilder()
-//            .log(ALL)
-//            .expectStatusCode(404)
-//            .build();
 }
 

@@ -28,8 +28,6 @@ dependencies {
             "io.rest-assured:json-schema-validator:$restAssuredVersion",
             "org.aeonbits.owner:owner:1.0.12",
             "org.apache.logging.log4j:log4j-core:2.17.1",
-
-
     )
     implementation(
             "org.slf4j:slf4j-api:2.0.0-alpha4",
@@ -62,7 +60,7 @@ test {
 
 task Arzamas(type: Test){
     useJUnitPlatform{
-        includeTags("e2e")
-        //excludeTags("e2e")
+        includeTags("API")
+        //excludeTags("Support")
     }
 }

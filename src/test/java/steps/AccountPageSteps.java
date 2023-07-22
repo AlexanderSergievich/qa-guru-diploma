@@ -11,19 +11,19 @@ public class AccountPageSteps {
         return this;
     }
 
-    @Step("Set old password")
-    public AccountPageSteps setOldPasswordStep() {
-        accountPage.setOldPassword();
+    @Step("Set old password '{password}'")
+    public AccountPageSteps setOldPasswordStep(String password) {
+        accountPage.setOldPassword(password);
         return this;
     }
-    @Step("Set new password")
-    public AccountPageSteps setNewPasswordStep() {
-        accountPage.setNewPassword();
+    @Step("Set new password '{newPassword}'")
+    public AccountPageSteps setNewPasswordStep(String newPassword) {
+        accountPage.setNewPassword(newPassword);
         return this;
     }
-    @Step("Repeat new password")
-    public AccountPageSteps repeatNewPasswordStep() {
-        accountPage.repeatNewPassword();
+    @Step("Repeat new password '{newPassword}'")
+    public AccountPageSteps repeatNewPasswordStep(String newPassword) {
+        accountPage.repeatNewPassword(newPassword);
         return this;
     }
     @Step("Click change password")

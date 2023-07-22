@@ -20,12 +20,12 @@ public class GiftPageSteps {
         giftPage.chooseSubDuration();
         return this;
     }
-    @Step("Set email")
+    @Step("Set email '{email}'")
     public GiftPageSteps setEmailStep(String email){
         giftPage.setEmail(email);
         return this;
     }
-    @Step("Confirm email")
+    @Step("Confirm email '{email}'")
     public GiftPageSteps setConfirmEmailStep(String email){
         giftPage.setConfirmEmail(email);
         return this;

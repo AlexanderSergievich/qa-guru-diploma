@@ -20,17 +20,12 @@ public class CoursesPageSteps {
         coursesPage.clickAllGenresButton();
         return this;
     }
-//    @Step("Click show all button")
-//    public CoursesPageStep clickShowAllStep(){
-//        coursesPage.clickShowAllButton();
-//        return this;
-//    }
-    @Step("Find course by name")
+    @Step("Find course '{courseName}'")
     public CoursesPageSteps findCourseByNameStep(String courseName){
         coursesPage.findCourseByName(courseName);
         return this;
     }
-    @Step("Check course title")
+    @Step("Check course '{courseName}'")
     public CoursesPageSteps checkCourseTitleStep(String courseName){
         coursesPage.checkCourseTitle(courseName);
         return this;

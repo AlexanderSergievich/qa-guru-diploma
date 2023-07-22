@@ -18,16 +18,16 @@ public class AccountPage extends TestBase {
         open("/account/edit");
         return this;
     }
-    public AccountPage setOldPassword(){
-        $(byText(oldPasswordField)).sibling(0).find(byTagName("input")).setValue(userConfig.getPassword());
+    public AccountPage setOldPassword(String password){
+        $(byText(oldPasswordField)).sibling(0).find(byTagName("input")).setValue(password);
         return this;
     }
-    public AccountPage setNewPassword(){
-        $(byText(newPasswordField)).sibling(0).find(byTagName("input")).setValue(userConfig.getNewPassword());
+    public AccountPage setNewPassword(String newPassword){
+        $(byText(newPasswordField)).sibling(0).find(byTagName("input")).setValue(newPassword);
         return this;
     }
-    public AccountPage repeatNewPassword(){
-        $(byText(repeatNewPasswordField)).sibling(0).find(byTagName("input")).setValue(userConfig.getNewPassword());
+    public AccountPage repeatNewPassword(String newPassword){
+        $(byText(repeatNewPasswordField)).sibling(0).find(byTagName("input")).setValue(newPassword);
         return this;
     }
     public AccountPage clickChangePassword(){

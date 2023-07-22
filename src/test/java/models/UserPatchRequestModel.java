@@ -11,6 +11,9 @@ public class UserPatchRequestModel {
         @lombok.Data
         public class Attributes{
             public String email;
+            public String password;
+            public String new_password;
+            public String new_password_confirmation;
             public boolean newsletter;
         }
     }
