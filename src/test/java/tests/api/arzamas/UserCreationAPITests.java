@@ -14,10 +14,11 @@ import static specs.UserSpecs.PostResponseSpecification;
 import static specs.UserSpecs.SignUpPostRequestSpecification;
 
 public class UserCreationAPITests extends AbstractApiTest {
+
     @Test
     @Tag("API")
     @DisplayName("Sign up user without marketing distribution agreement")
-    public String testSignUp(){
+    public void testSignUp(){
         postData.setType("email_identities");
         postAttributes.setEmail(faker.internet().emailAddress());
         postAttributes.setPassword(faker.internet().password());
@@ -44,6 +45,5 @@ public class UserCreationAPITests extends AbstractApiTest {
                 authorizationAPITests.testPerformAuthorisation();
             });
         });
-        return token;
     }
 }

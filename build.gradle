@@ -12,13 +12,13 @@ compileTestJava{
 
 def selenideVersion = "6.13.0",
     allureVersion = "2.19.0",
-    jUnitVersion = "5.8.2",
+    jUnitVersion = "5.9.2",
     restAssuredVersion = "5.3.0"
 
 dependencies {
     testImplementation (
             "com.codeborne:selenide:6.12.4",
-            "org.junit.jupiter:junit-jupiter:5.8.2",
+            "org.junit.jupiter:junit-jupiter:$jUnitVersion",
             "com.github.javafaker:javafaker:1.0.2",
             "com.fasterxml.jackson.core:jackson-core:2.13.1",
             "com.codeborne:pdf-test:1.8.1",
@@ -29,6 +29,7 @@ dependencies {
             "org.aeonbits.owner:owner:1.0.12",
             "org.apache.logging.log4j:log4j-core:2.17.1",
     )
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
     implementation(
             "org.slf4j:slf4j-api:2.0.0-alpha4",
             "org.slf4j:slf4j-log4j12:2.0.0-alpha4",
@@ -53,14 +54,17 @@ allure {
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+tasks.withType(Test) {
+    useJUnitPlatform()
+}
 
 test {
     useJUnitPlatform()
 }
 
-task Arzamas(type: Test){
+task Arzamas (type: Test){
     useJUnitPlatform{
-        includeTags("API")
-        //excludeTags("Support")
+        includeTags("API","e2e")
+        excludeTags("Support")
     }
 }

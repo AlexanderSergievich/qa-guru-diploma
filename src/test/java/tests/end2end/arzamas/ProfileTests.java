@@ -21,7 +21,7 @@ public class ProfileTests extends TestBase {
         AuthorizationAPITests authorizationAPITests = new AuthorizationAPITests();
         UserProfileAPITests userProfileAPITests = new UserProfileAPITests();
         step("Log in via Api", () -> {
-            authorizationAPITests.testSignIn(userConfig.getPassword());
+            authorizationAPITests.testSignInWithOldPassword();
             open("/favicon-32x32.png");
             Cookie authCookie = new Cookie(globalAuthCookieKey, authorizationAPITests.token);
             getWebDriver().manage().addCookie(authCookie);

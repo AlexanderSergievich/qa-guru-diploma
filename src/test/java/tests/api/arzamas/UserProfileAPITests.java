@@ -48,7 +48,7 @@ public class UserProfileAPITests extends AbstractApiTest {
         });
     }
     @Test
-    @Tag("API")
+    @Tag("Support")
     @DisplayName("Update password to the old one")
     public void testUpdatePasswordToOld(){
         step("Perform authorisation and get token", () -> {

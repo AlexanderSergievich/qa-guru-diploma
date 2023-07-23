@@ -11,13 +11,21 @@ import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static specs.UserSpecs.*;
-import static specs.UserSpecs.GetResponseSpecification;
 
 public class AuthorizationAPITests extends AbstractApiTest {
+
+
     @Test
     @Tag("API")
+    @DisplayName("Sign in user using old password")
+    public void testSignInWithOldPassword() {
+        testSignIn(userConfig.getPassword());
+    }
+
+    @Test
+    @Tag("Support")
     @DisplayName("Sign in user")
-    public String testSignIn(String password) {
+    public void testSignIn(String password) {
 
         postData.setType("email_identities");
         postAttributes.setEmail(userConfig.getEmail());
@@ -48,10 +56,9 @@ public class AuthorizationAPITests extends AbstractApiTest {
                 testPerformAuthorisation();
             });
         });
-        return token;
     }
     @Test
-    @Tag("API")
+    @Tag("Support")
     @DisplayName("Perform authorisation via jwt token")
     public void testPerformAuthorisation(){
         step("Perform authorisation", () -> {
@@ -64,7 +71,7 @@ public class AuthorizationAPITests extends AbstractApiTest {
         });
     }
     @Test
-    @Tag("API")
+    @Tag("Support")
     @DisplayName("Sign in to verify password has been changed")
     public void testPasswordBeenChanged() {
         testSignIn(userConfig.getNewPassword());
