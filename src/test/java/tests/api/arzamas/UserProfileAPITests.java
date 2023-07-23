@@ -1,11 +1,11 @@
 package tests.api.arzamas;
 
-import models.UserPatchRequestModel;
-import models.UserPatchResponseModel;
+import models.requests.UserPatchRequestModel;
+import models.responses.UserPatchResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import tests.api.AbstractApiTest;
+import tests.api.AbstractApiTestEnd2End;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static specs.UserSpecs.PostResponseSpecification;
 import static specs.UserSpecs.patchRequestSpecification;
 
-public class UserProfileAPITests extends AbstractApiTest {
+public class UserProfileAPITests extends AbstractApiTestEnd2End {
     @Test
     @Tag("API")
     @DisplayName("Update newsletter distribution")

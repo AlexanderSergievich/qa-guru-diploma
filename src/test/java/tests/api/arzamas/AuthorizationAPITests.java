@@ -1,18 +1,18 @@
 package tests.api.arzamas;
 
-import models.UserPostRequestModel;
-import models.UserPostResponseModel;
+import models.requests.UserPostRequestModel;
+import models.responses.UserPostResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import tests.api.AbstractApiTest;
+import tests.api.AbstractApiTestEnd2End;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static specs.UserSpecs.*;
 
-public class AuthorizationAPITests extends AbstractApiTest {
+public class AuthorizationAPITests extends AbstractApiTestEnd2End {
 
 
     @Test
@@ -43,7 +43,7 @@ public class AuthorizationAPITests extends AbstractApiTest {
             UserPostResponseModel userPostResponseModel = given(SignInPostRequestSpecification)
                     .body(constructedRequestModel)
                     .when()
-                    .post(url + "/api/v1/accounts/email_identities/sign_in")
+                    .post("/api/v1/accounts/email_identities/sign_in")
                     .then()
                     .spec(PostResponseSpecification)
                     .extract().as(UserPostResponseModel.class);
@@ -65,7 +65,7 @@ public class AuthorizationAPITests extends AbstractApiTest {
             given(GetRequestSpecification)
                     .header(authCookieKey, token)
                     .when()
-                    .get(url + "/api/v1/account?include=subscriptions,phone_identity,facebook_identity,google_identity,vk_identity,apple_identity")
+                    .get("/api/v1/account?include=subscriptions,phone_identity,facebook_identity,google_identity,vk_identity,apple_identity")
                     .then()
                     .spec(GetResponseSpecification);
         });

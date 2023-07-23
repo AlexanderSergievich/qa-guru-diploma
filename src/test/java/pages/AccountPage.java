@@ -1,14 +1,14 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import tests.TestBase;
+import tests.end2end.TestBaseEnd2End;
 
 import static com.codeborne.selenide.Selectors.byTagName;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class AccountPage extends TestBase {
+public class AccountPage extends TestBaseEnd2End {
     String oldPasswordField = "Текущий пароль";
     String newPasswordField = "Новый пароль";
     String repeatNewPasswordField = "Подтвердите новый пароль";

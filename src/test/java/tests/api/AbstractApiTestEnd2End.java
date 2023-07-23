@@ -1,13 +1,11 @@
 package tests.api;
 
-import models.UserPatchRequestModel;
-import models.UserPostRequestModel;
-import tests.TestBase;
+import models.requests.UserPatchRequestModel;
+import models.requests.UserPostRequestModel;
 
-public class AbstractApiTest extends TestBase {
+public class AbstractApiTestEnd2End extends TestBaseAPI {
     public static String token = "";
     public String authCookieKey = "Session-JWT";
-    public String url = "https://radio.arzamas.academy";
     public UserPostRequestModel.Data postData = new UserPostRequestModel().new Data();
     public UserPostRequestModel.Data.Attributes postAttributes = new UserPostRequestModel().new Data().new Attributes();
 

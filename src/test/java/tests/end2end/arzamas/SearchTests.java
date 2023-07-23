@@ -3,12 +3,12 @@ package tests.end2end.arzamas;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import tests.TestBase;
+import tests.end2end.TestBaseEnd2End;
 import utils.RandomUtils;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class SearchTests extends TestBase {
+public class SearchTests extends TestBaseEnd2End {
     String csvCourses = "src/test/resources/testdata/courses.csv";
     String csvModules = "src/test/resources/testdata/modules.csv";
     String course = RandomUtils.getRandomValueFromCSV(csvCourses);

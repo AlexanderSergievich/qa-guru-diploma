@@ -1,11 +1,11 @@
 package tests.api.arzamas;
 
-import models.UserPostRequestModel;
-import models.UserPostResponseModel;
+import models.requests.UserPostRequestModel;
+import models.responses.UserPostResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import tests.api.AbstractApiTest;
+import tests.api.AbstractApiTestEnd2End;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static specs.UserSpecs.PostResponseSpecification;
 import static specs.UserSpecs.SignUpPostRequestSpecification;
 
-public class UserCreationAPITests extends AbstractApiTest {
+public class UserCreationAPITests extends AbstractApiTestEnd2End {
 
     @Test
     @Tag("API")

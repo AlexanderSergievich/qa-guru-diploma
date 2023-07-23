@@ -4,15 +4,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
-import tests.TestBase;
 import tests.api.arzamas.AuthorizationAPITests;
 import tests.api.arzamas.UserProfileAPITests;
+import tests.end2end.TestBaseEnd2End;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static io.qameta.allure.Allure.step;
 
-public class ProfileTests extends TestBase {
+public class ProfileTests extends TestBaseEnd2End {
     String globalAuthCookieKey = "globalSessionJwt";
     @Test
     @Tag("e2e")
