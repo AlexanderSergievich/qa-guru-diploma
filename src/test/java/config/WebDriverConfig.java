@@ -7,14 +7,14 @@ import org.aeonbits.owner.Config;
 })
 public interface WebDriverConfig extends Config{
             @Key("browser")
-            //@DefaultValue("CHROME")
+            @DefaultValue("CHROME")
             String getBrowser();
 
             @Key("browserVersion")
             String getBrowserVersion();
 
             @Key("baseUrl")
-            @DefaultValue("https://demoqa.com")
+            @DefaultValue("https://arzamas.academy")
             String getBaseUrl();
 
             @Key("isRemoteWebDriver")

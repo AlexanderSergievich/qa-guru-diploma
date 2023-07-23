@@ -28,9 +28,6 @@ public class TestBaseEnd2End {
     static void setup(){
         WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
 
-        Configuration.baseUrl = config.getBaseUrl();
-        Configuration.browser = config.getBrowser();
-        Configuration.browserVersion = config.getBrowserVersion();
         if (config.isRemoteWebDriver()) {
             Configuration.browser = System.getProperty("browser");
             Configuration.browserVersion = System.getProperty("browserVersion");
@@ -38,16 +35,21 @@ public class TestBaseEnd2End {
             Configuration.remote = System.getProperty("remote");
             Configuration.baseUrl = System.getProperty("baseUrl");
             Configuration.browserSize = System.getProperty("browserSize");
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                    "enableVNC", true,
-                    "enableVideo", true
-            ));
-            Configuration.browserCapabilities = capabilities;
-            SelenideLogger.addListener("allure", new AllureSelenide());
+        } else {
+            Configuration.baseUrl = config.getBaseUrl();
+            Configuration.browser = config.getBrowser();
+            Configuration.browserVersion = config.getBrowserVersion();
         }
         Configuration.timeout = 10000;
 
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+
+        Configuration.browserCapabilities = capabilities;
+        SelenideLogger.addListener("allure", new AllureSelenide());
     }
     @AfterEach
     void addAttachments() {
