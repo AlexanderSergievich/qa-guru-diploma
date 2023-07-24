@@ -39,8 +39,7 @@ public class TestBaseEnd2End {
 //            Configuration.baseUrl = config.getBaseUrl();
 //            Configuration.browser = config.getBrowser();
 //            Configuration.browserVersion = config.getBrowserVersion();
-//        }
-        Configuration.timeout = 10000;
+//        }//       Configuration.timeout = 10000;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
