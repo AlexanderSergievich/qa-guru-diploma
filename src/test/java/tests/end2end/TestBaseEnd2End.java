@@ -26,7 +26,7 @@ public class TestBaseEnd2End {
     public static OnlineUniversityPageSteps onlineUniversityPageSteps = new OnlineUniversityPageSteps();
     @BeforeAll
     static void setup(){
-        WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
+//        WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
 
 //        if (config.isRemoteWebDriver()) {
             Configuration.browser = System.getProperty("browser");
