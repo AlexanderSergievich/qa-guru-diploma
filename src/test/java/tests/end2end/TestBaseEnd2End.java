@@ -27,18 +27,18 @@ public class TestBaseEnd2End {
     static void setup(){
         WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
 
-        if (config.isRemoteWebDriver()) {
+//        if (config.isRemoteWebDriver()) {
             Configuration.browser = System.getProperty("browser");
             Configuration.browserVersion = System.getProperty("browserVersion");
             Configuration.pageLoadStrategy = "eager";
             Configuration.remote = System.getProperty("remote");
             Configuration.baseUrl = System.getProperty("baseUrl");
             Configuration.browserSize = System.getProperty("browserSize");
-        } else {
+//        } else {
             Configuration.baseUrl = config.getBaseUrl();
             Configuration.browser = config.getBrowser();
             Configuration.browserVersion = config.getBrowserVersion();
-        }
+//        }
         Configuration.timeout = 10000;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
