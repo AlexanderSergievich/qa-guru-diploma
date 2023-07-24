@@ -7,7 +7,6 @@ import config.UserConfig;
 import config.WebDriverConfig;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
-import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -26,20 +25,21 @@ public class TestBaseEnd2End {
     public static OnlineUniversityPageSteps onlineUniversityPageSteps = new OnlineUniversityPageSteps();
     @BeforeAll
     static void setup(){
-//        WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
+        WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
 
-//        if (config.isRemoteWebDriver()) {
+        if (config.isRemoteWebDriver()) {
             Configuration.browser = System.getProperty("browser");
             Configuration.browserVersion = System.getProperty("browserVersion");
             Configuration.pageLoadStrategy = "eager";
             Configuration.remote = System.getProperty("remote");
             Configuration.baseUrl = System.getProperty("baseUrl");
             Configuration.browserSize = System.getProperty("browserSize");
-//        } else {
-//            Configuration.baseUrl = config.getBaseUrl();
-//            Configuration.browser = config.getBrowser();
-//            Configuration.browserVersion = config.getBrowserVersion();
-//        }//       Configuration.timeout = 10000;
+        } else {
+            Configuration.baseUrl = config.getBaseUrl();
+            Configuration.browser = config.getBrowser();
+            Configuration.browserVersion = config.getBrowserVersion();
+        }
+        Configuration.timeout = 10000;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
