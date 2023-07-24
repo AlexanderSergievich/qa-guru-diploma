@@ -36,7 +36,7 @@ public class TestBaseEnd2End {
         } else {
             Configuration.baseUrl = config.getBaseUrl();
             Configuration.browser = config.getBrowser();
-            Configuration.browserVersion = config.getBrowserVersion();}
+        }
 
         Configuration.timeout = 10000;
 

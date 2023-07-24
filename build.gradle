@@ -63,9 +63,21 @@ test {
     useJUnitPlatform()
 }
 
-task Arzamas (type: Test){
+task ArzamasTests (type: Test){
     useJUnitPlatform{
         includeTags("API","e2e")
+        excludeTags("Support")
+    }
+}
+task ArzamasAPI (type: Test){
+    useJUnitPlatform{
+        includeTags("API")
+        excludeTags("Support")
+    }
+}
+task ArzamasE2E (type: Test){
+    useJUnitPlatform{
+        includeTags("e2e")
         excludeTags("Support")
     }
 }
