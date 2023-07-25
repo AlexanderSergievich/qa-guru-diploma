@@ -15,8 +15,8 @@ public class GiftPage {
     SelenideElement paymentIFrame = $("[allow='payment']");
     SelenideElement payButton = $(".button.button_primary");
 
-    private String radioButtonDataId = "2";
-    private String durationOfSubscription = "2 года";
+    private String radioButtonDataId = "1";
+    private String subscriptionPrice = "[data-gift='1']";
     public GiftPage clickOnGiftButton(){
         giftButton.click();
         return this;
@@ -26,7 +26,7 @@ public class GiftPage {
         return this;
     }
     public GiftPage chooseSubDuration(){
-        $("[data-id='" + radioButtonDataId + "']").find(byText(durationOfSubscription)).click();
+        $("[data-id='" + radioButtonDataId + "']").find(subscriptionPrice).click();
         return this;
     }
     public GiftPage setEmail(String email){
