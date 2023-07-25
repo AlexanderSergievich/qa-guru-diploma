@@ -28,4 +28,6 @@ public interface WebDriverConfig extends Config {
     @DefaultValue("1920x1080")
     String getBrowserSize();
 
+    @Key("browserBinary")
+    String getBrowserBinary();
 }

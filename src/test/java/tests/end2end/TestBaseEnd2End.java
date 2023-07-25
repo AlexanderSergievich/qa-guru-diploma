@@ -36,11 +36,10 @@ public class TestBaseEnd2End {
         } else {
             Configuration.baseUrl = config.getBaseUrl();
             Configuration.browser = config.getBrowser();
-            Configuration.browserBinary = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+            Configuration.browserBinary = config.getBrowserBinary();
         }
         RestAssured.baseURI = "https://radio.arzamas.academy";
-
-        Configuration.timeout = 10000;
+        Configuration.timeout = 15000;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
