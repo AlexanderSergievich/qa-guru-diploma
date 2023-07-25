@@ -7,13 +7,13 @@ import config.UserConfig;
 import config.WebDriverConfig;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
+import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import steps.*;
-
 import java.util.Map;
 
 public class TestBaseEnd2End {
@@ -26,7 +26,7 @@ public class TestBaseEnd2End {
     @BeforeAll
     static void setup(){
         WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
-        if(config.isRemoteWebDriver()) {
+        if (config.isRemoteWebDriver()) {
             Configuration.browser = config.getBrowser();
             Configuration.browserVersion = config.getBrowserVersion();
             Configuration.pageLoadStrategy = "eager";
@@ -37,6 +37,7 @@ public class TestBaseEnd2End {
             Configuration.baseUrl = config.getBaseUrl();
             Configuration.browser = config.getBrowser();
         }
+        RestAssured.baseURI = "https://radio.arzamas.academy";
 
         Configuration.timeout = 10000;
 
