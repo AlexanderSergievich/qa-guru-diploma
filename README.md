@@ -68,13 +68,13 @@ Using the link below you can go to the parameterized build of the project:
 #### Build options
 The table below shows the build options in Jenkins, their purpose and default settings.
 
-|                      **PARAMETER**                       | **DESCRIPTION** |                    **DEFAULT VALUE**                    |
-|:--------------------------------------------------------:|:---------:|:-------------------------------------------------------:|
-|                    <code>TASK</code>                     | Base URL of the site for configuration settings|          ArzamasTests, ArzamasAPI, ArzamasE2E           |
-|                   <code>BROWSER</code>                   | Browser type and its version|                     Chrome, Firefox                     |
-|                <code>BROWSER_SIZE</code>                 | Browser size |                  1920x1080, 1440x1000                   |
-|               <code>BROWSER_VERSION</code>               | Browser size |                           100                           |
-|                  <code>BASE_URL</code>                   | Browser size |                 https://arzamas.academy                 |
+|                      **PARAMETER**                       |                 **DESCRIPTION**                 |                    **DEFAULT VALUE**                    |
+|:--------------------------------------------------------:|:-----------------------------------------------:|:-------------------------------------------------------:|
+|                    <code>TASK</code>                     | Base URL of the site for configuration settings |          ArzamasTests, ArzamasAPI, ArzamasE2E           |
+|                   <code>BROWSER</code>                   |          Browser type and its version           |                     Chrome, Firefox                     |
+|                <code>BROWSER_SIZE</code>                 |                  Browser size                   |                  1920x1080, 1440x1000                   |
+|               <code>BROWSER_VERSION</code>               |                 Browser version                 |                           100                           |
+|                  <code>BASE_URL</code>                   |                    Base URL                     |                 https://arzamas.academy                 |
 
 #### Job in Jenkins: algorithm and autotests results
 1. Open the project from the link above. The screenshot shows the appearance of the project window in Jenkins.
@@ -108,7 +108,7 @@ The screenshot below shows the main page of the report.
 #### Allure report: test cases
 On the Suites tab a standard structural representation of executed tests can be found.
 <p align="center">
-<img title="Allure_report_suits" src="media/screenshots/Allure_report_suits_optimal.jpg">
+<img title="Allure_report_suits" src="media/screenshots/Allure_report_suits_optimal.png">
 </p>
 
 
@@ -177,7 +177,7 @@ flowchart LR
 The test report is accompanied by a video in the Attachment section.
 
 <p align="center">
-  <img title="Selenoid Video" src="media/video/§.gif">
+  <img title="Selenoid Video" src="media/gif/Selenoid_video.gif">
 </p>
 
 [Back to content](#pretzel-table-of-contents)
