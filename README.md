@@ -108,7 +108,7 @@ The screenshot below shows the main page of the report.
 #### Allure report: test cases
 On the Suites tab a standard structural representation of executed tests can be found.
 <p align="center">
-<img title="Allure_report_suits" src="media/screenshots/Allure_report_suits_optimal.png">
+<img title="Allure_report_suits" src="media/screenshots/Allure_report_suits.png">
 </p>
 
 
