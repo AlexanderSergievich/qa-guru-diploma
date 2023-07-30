@@ -17,7 +17,7 @@ public class AuthorizationAPITests extends AbstractApiTestEnd2End {
 
     @Test
     @Tag("API")
-    @DisplayName("Sign in user using old password")
+    @DisplayName("Sign in user using password")
     public void testSignInWithOldPassword() {
         testSignIn(userConfig.getPassword());
     }
