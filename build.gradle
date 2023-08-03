@@ -22,12 +22,14 @@ dependencies {
             "com.github.javafaker:javafaker:1.0.2",
             "com.fasterxml.jackson.core:jackson-core:2.13.1",
             "com.codeborne:pdf-test:1.8.1",
-            'io.qameta.allure:allure-selenide:2.22.0',
+            "io.qameta.allure:allure-selenide:2.22.0",
             "io.qameta.allure:allure-rest-assured:$allureVersion",
             "io.rest-assured:rest-assured:$restAssuredVersion",
             "io.rest-assured:json-schema-validator:$restAssuredVersion",
             "org.aeonbits.owner:owner:1.0.12",
             "org.apache.logging.log4j:log4j-core:2.17.1",
+            "io.appium:java-client:8.3.0",
+            "commons-io:commons-io:2.11.0"
     )
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
     implementation(
@@ -66,7 +68,7 @@ test {
 task ArzamasTests (type: Test){
     useJUnitPlatform{
         includeTags("API","e2e")
-        excludeTags("Support")
+        excludeTags("Support", "mobile")
     }
 }
 task ArzamasAPI (type: Test){
@@ -78,6 +80,12 @@ task ArzamasAPI (type: Test){
 task ArzamasE2E (type: Test){
     useJUnitPlatform{
         includeTags("e2e")
+        excludeTags("Support")
+    }
+}
+task ArzamasMobile (type: Test) {
+    useJUnitPlatform {
+        includeTags("mobile")
         excludeTags("Support")
     }
 }

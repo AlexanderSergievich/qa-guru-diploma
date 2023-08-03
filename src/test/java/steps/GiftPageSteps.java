@@ -1,7 +1,7 @@
 package steps;
 
 import io.qameta.allure.Step;
-import pages.GiftPage;
+import pages.web.GiftPage;
 
 public class GiftPageSteps {
     GiftPage giftPage = new GiftPage();

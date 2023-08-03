@@ -52,6 +52,14 @@ Lauching E2E tests:
 ```bash
 gradle clean ArzamasE2E
 ```
+Launching mobile tests locally:
+```bash
+gradle clean ArzamasMobile -DdeviceHost=android
+```
+Launching mobile tests via browserstack:
+```bash
+gradle clean ArzamasMobile -DdeviceHost=browserstack
+```
 ___
 Running the following command in the IDE terminal will run the tests ***remotely*** in Selenoid taking into account the specified parameters:
 ```bash 

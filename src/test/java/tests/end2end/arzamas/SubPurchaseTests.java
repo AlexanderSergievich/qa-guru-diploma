@@ -3,7 +3,7 @@ package tests.end2end.arzamas;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pages.CoursesPage;
+import pages.web.CoursesPage;
 import tests.end2end.TestBaseEnd2End;
 
 import static com.codeborne.selenide.Selenide.open;

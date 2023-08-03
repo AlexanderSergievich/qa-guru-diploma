@@ -1,7 +1,7 @@
 package steps;
 
 import io.qameta.allure.Step;
-import pages.OnlineUniversityPage;
+import pages.web.OnlineUniversityPage;
 
 public class OnlineUniversityPageSteps {
     OnlineUniversityPage onlineUniversityPage = new OnlineUniversityPage();

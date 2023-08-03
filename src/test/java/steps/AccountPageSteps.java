@@ -1,7 +1,7 @@
 package steps;
 
 import io.qameta.allure.Step;
-import pages.AccountPage;
+import pages.web.AccountPage;
 
 public class AccountPageSteps {
     AccountPage accountPage = new AccountPage();

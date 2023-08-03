@@ -1,7 +1,7 @@
 package steps;
 
 import io.qameta.allure.Step;
-import pages.SearchPage;
+import pages.web.SearchPage;
 
 public class SearchPageSteps {
     SearchPage searchPage = new SearchPage();
