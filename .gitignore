@@ -1,3 +1,6 @@
+user.properties
+remote.properties
+browserstackauth.properties
 # Compiled class file
 *.class
 
