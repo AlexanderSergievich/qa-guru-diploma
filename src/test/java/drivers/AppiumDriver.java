@@ -30,6 +30,7 @@ public class AppiumDriver implements WebDriverProvider {
             throw new RuntimeException(e);
         }
     }
+
     @Nonnull
     @Override
     public WebDriver createDriver(@Nonnull Capabilities capabilities) {

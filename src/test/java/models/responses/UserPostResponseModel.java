@@ -1,9 +1,11 @@
 package models.responses;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+
 @Data
 public class UserPostResponseModel {
-    public String session_jwt;
-    public String action;
-
+    @JsonProperty("session_jwt")
+    private String sessionJwt;
+    private String action;
 }

@@ -6,12 +6,12 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selectors.byText;
 
-
 public class OnlineUniversityPage {
-    SelenideElement ellipsisButton = $(".site-header__subnav-button");
-    SelenideElement universityLink = $("[href='/university']");
-    SelenideElement universityTitle = $(byText("История русской культуры"));
-    SelenideElement moduleTitle = $(".course-title");
+    private SelenideElement ellipsisButton = $(".site-header__subnav-button");
+    private SelenideElement universityLink = $("[href='/university']");
+    private SelenideElement universityTitle = $(byText("История русской культуры"));
+    private SelenideElement moduleTitle = $(".course-title");
+
     public OnlineUniversityPage clickOnEllipsisButton() {
         ellipsisButton.click();
         return this;
@@ -21,10 +21,12 @@ public class OnlineUniversityPage {
         universityLink.click();
         return this;
     }
+
     public OnlineUniversityPage verifyPageTitle() {
         universityTitle.should(Condition.exist);
         return this;
     }
+
     public OnlineUniversityPage findModuleByName(String moduleName) {
         $(byText(moduleName)).scrollIntoView(true).parent().parent().preceding(0).click();
         return this;

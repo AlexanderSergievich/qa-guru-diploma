@@ -6,22 +6,23 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-public class RandomUtils {
-public static String getRandomValueFromCSV(String csvFile) {
-    List<String[]> data = readCSV(csvFile);
 
-    if (data != null && data.size() > 0) {
-        String[] randomRow = getRandomRow(data);
-        if (randomRow != null && randomRow.length > 0) {
-            String randomValue = getRandomValue(randomRow);
-            return randomValue;
+public class RandomUtils {
+    public static String getRandomValueFromCSV(String csvFile) {
+        List<String[]> data = readCSV(csvFile);
+
+        if (data != null && data.size() > 0) {
+            String[] randomRow = getRandomRow(data);
+            if (randomRow != null && randomRow.length > 0) {
+                String randomValue = getRandomValue(randomRow);
+                return randomValue;
+            } else {
+                return "No data found in the CSV file.";
+            }
         } else {
-            return "No data found in the CSV file.";
+            return "Failed to read the CSV file.";
         }
-    } else {
-        return "Failed to read the CSV file.";
     }
-}
 
     private static List<String[]> readCSV(String csvFile) {
         List<String[]> data = new ArrayList<>();

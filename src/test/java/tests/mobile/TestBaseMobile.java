@@ -33,6 +33,7 @@ public class TestBaseMobile {
         Configuration.browserBinary = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
         open();
     }
+
     @BeforeEach
     void addListener() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());

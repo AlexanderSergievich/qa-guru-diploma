@@ -8,14 +8,19 @@ import org.aeonbits.owner.Config;
 public interface AndroidConfig extends Config {
     @Key("mobile.version")
     String mobileVersion();
+
     @Key("bs")
     String bs();
+
     @Key("project")
     String project();
+
     @Key("build")
     String build();
+
     @Key("name")
     String name();
+
     @Key("mobile.deviceName")
     String mobileDevice();
 
@@ -28,7 +33,4 @@ public interface AndroidConfig extends Config {
 
     @Key("mobile.appactivity")
     String mobileAppActivity();
-
-    @Key("mobile.url")
-    String mobileUrl();
 }

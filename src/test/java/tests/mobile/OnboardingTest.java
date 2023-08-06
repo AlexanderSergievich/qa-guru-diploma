@@ -1,4 +1,4 @@
-package tests.mobile.arzamas;
+package tests.mobile;
 
 import com.codeborne.selenide.Selenide;
 import components.HamburgerBar;

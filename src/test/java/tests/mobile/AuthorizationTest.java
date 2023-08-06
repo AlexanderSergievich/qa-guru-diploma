@@ -1,10 +1,9 @@
-package tests.mobile.arzamas;
+package tests.mobile;
 
 import components.HamburgerBar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import tests.mobile.TestBaseMobile;
 
 public class AuthorizationTest extends TestBaseMobile {
     HamburgerBar hamburgerBar = new HamburgerBar();

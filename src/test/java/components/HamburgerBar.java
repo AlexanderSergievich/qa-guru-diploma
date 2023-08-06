@@ -9,14 +9,15 @@ public class HamburgerBar {
     String bounds = "[47,185][100,237]";
     SelenideElement hamburgerButton = $(AppiumBy
             .xpath("(//android.widget.TextView)[1]")),
-    materialsButton = $(AppiumBy.xpath("//*[contains(@text, 'Материалы')]"));
+            materialsButton = $(AppiumBy.xpath("//*[contains(@text, 'Материалы')]"));
 
 
-    public HamburgerBar clickOnBurgerButton(){
+    public HamburgerBar clickOnBurgerButton() {
         hamburgerButton.click();
         return this;
     }
-    public HamburgerBar clickOnMaterialsButton(){
+
+    public HamburgerBar clickOnMaterialsButton() {
         materialsButton.click();
         return this;
     }

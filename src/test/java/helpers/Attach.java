@@ -30,7 +30,7 @@ public class Attach {
 
     public static void browserConsoleLogs() {
         attachAsText(
-                "Browser console logs",
+                "browser console logs",
                 String.join("\n", Selenide.getWebDriverLogs(BROWSER))
         );
     }
@@ -50,7 +50,6 @@ public class Attach {
 
     public static URL getVideoUrl() {
         String videoUrl = "https://selenoid.autotests.cloud/video/" + sessionId() + ".mp4";
-//        System.out.println(sessionId());
         try {
             return new URL(videoUrl);
         } catch (MalformedURLException e) {

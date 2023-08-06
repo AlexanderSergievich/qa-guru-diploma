@@ -1,14 +1,17 @@
 package config;
 
 import org.aeonbits.owner.Config;
+
 @Config.Sources({
         "classpath:properties/user.properties"
 })
 public interface UserConfig extends Config {
     @Key("email")
-    String getEmail();
+    String email();
+
     @Key("password")
-    String getPassword();
+    String password();
+
     @Key("newPassword")
-    String getNewPassword();
+    String newPassword();
 }

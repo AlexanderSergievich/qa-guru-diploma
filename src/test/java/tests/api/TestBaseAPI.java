@@ -7,7 +7,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
 
 public class TestBaseAPI {
-    public UserConfig userConfig = ConfigFactory.create(UserConfig.class, System.getProperties());
+    public static UserConfig userConfig = ConfigFactory.create(UserConfig.class, System.getProperties());
     public static Faker faker = new Faker();
 
     @BeforeAll

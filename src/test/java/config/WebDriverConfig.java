@@ -8,28 +8,36 @@ import org.aeonbits.owner.Config;
 public interface WebDriverConfig extends Config {
     @Key("browser")
     @DefaultValue("CHROME")
-    String getBrowser();
+    String browser();
 
     @Key("browserVersion")
     @DefaultValue("100")
-    String getBrowserVersion();
+    String browserVersion();
 
     @Key("baseUrl")
     @DefaultValue("https://arzamas.academy")
-    String getBaseUrl();
+    String baseUrl();
 
     @Key("isRemoteWebDriver")
     @DefaultValue("false")
     Boolean isRemoteWebDriver();
 
     @Key("remoteURL")
-    @DefaultValue("https://arzamas.academy")
-    String getRemoteURL();
+    @DefaultValue("selenoid.autotests.cloud")
+    String remoteURL();
+
+    @Key("login")
+    @DefaultValue("user1")
+    String login();
+
+    @Key("password")
+    @DefaultValue("1234")
+    String password();
 
     @Key("browserSize")
     @DefaultValue("1920x1080")
-    String getBrowserSize();
+    String browserSize();
 
     @Key("browserBinary")
-    String getBrowserBinary();
+    String browserBinary();
 }

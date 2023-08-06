@@ -1,9 +1,8 @@
-package tests.end2end.arzamas;
+package tests.end2end;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import tests.end2end.TestBaseEnd2End;
 import utils.RandomUtils;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -17,12 +16,13 @@ public class SearchTests extends TestBaseEnd2End {
     @Test
     @Tag("e2e")
     @DisplayName("Use search field to find course")
-    public void testSearchField(){
+    public void testSearchField() {
         open("/");
         searchPageSteps.clickOnSearchStep()
                 .enterCourseNameAndPressEnterStep(course)
                 .findCourseOnPageStep(course);
     }
+
     @Test
     @Tag("e2e")
     @DisplayName("Find course by name using courses tab")
@@ -33,6 +33,7 @@ public class SearchTests extends TestBaseEnd2End {
                 .findCourseByNameStep(course)
                 .checkCourseTitleStep(course);
     }
+
     @Test
     @Tag("e2e")
     @DisplayName("Find online university course about history of russian culture by name")

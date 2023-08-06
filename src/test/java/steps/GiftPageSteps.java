@@ -5,38 +5,45 @@ import pages.web.GiftPage;
 
 public class GiftPageSteps {
     GiftPage giftPage = new GiftPage();
+
     @Step("Click on gift button")
-    public GiftPageSteps clickOnGiftButtonStep(){
+    public GiftPageSteps clickOnGiftButtonStep() {
         giftPage.clickOnGiftButton();
         return this;
     }
+
     @Step("Choose the subscription")
-    public GiftPageSteps clickOnRadioButtonStep(){
-        giftPage.clickRadioButton();
+    public GiftPageSteps clickOnRadioButtonStep(int radioButtonDataId) {
+        giftPage.clickRadioButton(radioButtonDataId);
         return this;
     }
+
     @Step("Choose the duration of subscription")
-    public GiftPageSteps chooseSubDurationStep(){
-        giftPage.chooseSubDuration();
+    public GiftPageSteps chooseSubDurationStep(int radioButtonDataId) {
+        giftPage.chooseSubDuration(radioButtonDataId);
         return this;
     }
+
     @Step("Set email '{email}'")
-    public GiftPageSteps setEmailStep(String email){
+    public GiftPageSteps setEmailStep(String email) {
         giftPage.setEmail(email);
         return this;
     }
+
     @Step("Confirm email '{email}'")
-    public GiftPageSteps setConfirmEmailStep(String email){
+    public GiftPageSteps setConfirmEmailStep(String email) {
         giftPage.setConfirmEmail(email);
         return this;
     }
+
     @Step("Click buy button")
-    public GiftPageSteps clickBuyButtonStep(){
+    public GiftPageSteps clickBuyButtonStep() {
         giftPage.clickBuyButton();
         return this;
     }
+
     @Step("Check whether buy button is displayed and disabled")
-    public GiftPageSteps checkPayButtonStep(){
+    public GiftPageSteps checkPayButtonStep() {
         giftPage.checkBuyButtonIsDisabled();
         return this;
     }

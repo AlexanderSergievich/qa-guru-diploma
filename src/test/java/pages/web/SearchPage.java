@@ -8,17 +8,20 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selectors.byText;
 
 public class SearchPage {
-    SelenideElement searchButton = $("[aria-label='Поиск']");
-    SelenideElement searchField = $("#search");
-    public SearchPage clickOnSearchButton(){
+    private SelenideElement searchButton = $("[aria-label='Поиск']");
+    private SelenideElement searchField = $("#search");
+
+    public SearchPage clickOnSearchButton() {
         searchButton.click();
         return this;
     }
-    public SearchPage enterCourseNameAndPushEnter(String courseName){
+
+    public SearchPage enterCourseNameAndPushEnter(String courseName) {
         searchField.setValue(courseName).sendKeys(Keys.ENTER);
         return this;
     }
-    public SearchPage findCourseOnAPage(String courseName){
+
+    public SearchPage findCourseOnAPage(String courseName) {
         $(byText(courseName)).should(Condition.exist).click();
         return this;
     }

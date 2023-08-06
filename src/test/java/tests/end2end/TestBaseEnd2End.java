@@ -9,34 +9,38 @@ import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import steps.*;
+
 import java.util.Map;
 
 public class TestBaseEnd2End {
-    public UserConfig userConfig = ConfigFactory.create(UserConfig.class, System.getProperties());
+    public static UserConfig userConfig = ConfigFactory.create(UserConfig.class, System.getProperties());
     public static AccountPageSteps accountPageSteps = new AccountPageSteps();
     public static CoursesPageSteps coursesPageSteps = new CoursesPageSteps();
     public static GiftPageSteps giftPageSteps = new GiftPageSteps();
     public static SearchPageSteps searchPageSteps = new SearchPageSteps();
     public static OnlineUniversityPageSteps onlineUniversityPageSteps = new OnlineUniversityPageSteps();
+
     @BeforeAll
-    static void setup(){
+    static void setup() {
         WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
         if (config.isRemoteWebDriver()) {
-            Configuration.browser = config.getBrowser();
-            Configuration.browserVersion = config.getBrowserVersion();
+            Configuration.remote = String.format("https://%s:%s@%s/wd/hub", config.login(), config.password(), config.remoteURL());
+
+            Configuration.browser = config.browser();
+            Configuration.browserVersion = config.browserVersion();
             Configuration.pageLoadStrategy = "eager";
-            Configuration.remote = config.getRemoteURL();
-            Configuration.baseUrl = config.getBaseUrl();
-            Configuration.browserSize = config.getBrowserSize();
+//            Configuration.remote = config.remoteURL();
+            Configuration.baseUrl = config.baseUrl();
+            Configuration.browserSize = config.browserSize();
         } else {
-            Configuration.baseUrl = config.getBaseUrl();
-            Configuration.browser = config.getBrowser();
-            Configuration.browserBinary = config.getBrowserBinary();
+            Configuration.baseUrl = config.baseUrl();
+            Configuration.browser = config.browser();
+            Configuration.browserBinary = config.browserBinary();
         }
         RestAssured.baseURI = "https://radio.arzamas.academy";
         Configuration.timeout = 15000;
@@ -48,8 +52,13 @@ public class TestBaseEnd2End {
         ));
 
         Configuration.browserCapabilities = capabilities;
-        SelenideLogger.addListener("allure", new AllureSelenide());
     }
+
+    @BeforeEach
+    void addListener() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+    }
+
     @AfterEach
     void addAttachments() {
         WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
@@ -60,8 +69,9 @@ public class TestBaseEnd2End {
         Attach.pageSource();
         Attach.browserConsoleLogs();
     }
-    @AfterAll
-    static void closeBrowserBeforeNewTest(){
+
+    @AfterEach
+    void closeBrowserBeforeNewTest() {
         Selenide.closeWebDriver();
     }
 }

@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class BrowserStackDriver implements WebDriverProvider {
-    static BrowserStackConfig BSConfig = ConfigFactory.create(BrowserStackConfig.class, System.getProperties());
+    static BrowserStackConfig bsConfig = ConfigFactory.create(BrowserStackConfig.class, System.getProperties());
     static AndroidConfig androidConfig = ConfigFactory.create(AndroidConfig.class, System.getProperties());
 
     @Nonnull
@@ -22,8 +22,8 @@ public class BrowserStackDriver implements WebDriverProvider {
     public WebDriver createDriver(@Nonnull Capabilities capabilities) {
         MutableCapabilities mutableCapabilities = new MutableCapabilities();
         mutableCapabilities.merge(capabilities);
-        mutableCapabilities.setCapability("browserstack.user", BSConfig.username());
-        mutableCapabilities.setCapability("browserstack.key", BSConfig.password());
+        mutableCapabilities.setCapability("browserstack.user", bsConfig.username());
+        mutableCapabilities.setCapability("browserstack.key", bsConfig.password());
         mutableCapabilities.setCapability("app", androidConfig.bs());
         mutableCapabilities.setCapability("device", androidConfig.mobileDevice());
         mutableCapabilities.setCapability("os_version", androidConfig.mobileVersion());
@@ -32,7 +32,7 @@ public class BrowserStackDriver implements WebDriverProvider {
         mutableCapabilities.setCapability("name", androidConfig.name());
         try {
             return new RemoteWebDriver(
-                    new URL(BSConfig.baseUrl()), mutableCapabilities);
+                    new URL(bsConfig.baseUrl()), mutableCapabilities);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }

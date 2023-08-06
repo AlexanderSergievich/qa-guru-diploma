@@ -3,7 +3,7 @@ package tests.api;
 import models.requests.UserPatchRequestModel;
 import models.requests.UserPostRequestModel;
 
-public class AbstractApiTestEnd2End extends TestBaseAPI {
+public class AbstractApiTest extends TestBaseAPI {
     public static String token = "";
     public String authCookieKey = "Session-JWT";
     public UserPostRequestModel.Data postData = new UserPostRequestModel().new Data();
