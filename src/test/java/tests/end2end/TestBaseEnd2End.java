@@ -34,7 +34,6 @@ public class TestBaseEnd2End {
             Configuration.browser = config.browser();
             Configuration.browserVersion = config.browserVersion();
             Configuration.pageLoadStrategy = "eager";
-//            Configuration.remote = config.remoteURL();
             Configuration.baseUrl = config.baseUrl();
             Configuration.browserSize = config.browserSize();
         } else {
